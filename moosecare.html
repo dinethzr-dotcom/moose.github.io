@@ -4,52 +4,157 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Care Instruction for this Product</title>
+
 <style>
-    body { font-family: Arial, sans-serif; background: #f9f9f9; margin:0; padding:0; color: #333; }
-
-    /* Header */
-    header { background: #333; color: #fff; padding: 10px; display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; }
-    header img { height: 50px; margin-right: 15px; flex: 0 0 auto; }
-    header h1 { margin: 0; font-size: 1.5em; flex: 1 1 200px; text-align: center; }
-
-    /* Navigation Bar */
-    nav { background: #444; padding: 10px 20px; display: flex; flex-wrap: wrap; justify-content: center; }
-    nav a { color: #fff; text-decoration: none; margin: 5px 15px; font-weight: bold; transition: color 0.2s; }
-    nav a:hover { color: #ffcc00; }
-
-    /* Main content */
-    .content { max-width: 700px; margin: 25px auto; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 3px 12px rgba(0,0,0,0.15); }
-
-    h2 { text-align: center; color: #222; margin-bottom: 20px; font-size: 1.4em; }
-
-    .label-info, .care-info { margin-bottom: 25px; }
-    .label-info p, .care-info p { margin: 8px 0; font-size: 1em; line-height: 1.5; display: flex; flex-wrap: wrap; }
-    .label-info span.label, .care-info span.label { font-weight: bold; color: #555; width: 140px; flex: 0 0 auto; }
-
-    /* Highlight fire warning */
-    .warning { color: red; font-weight: bold; }
-
-    /* QR Section */
-    .qr-container { display: flex; align-items: center; justify-content: center; margin: 15px 0; }
-    .qr-icon { width: 60px; height: 60px; background: url('https://upload.wikimedia.org/wikipedia/commons/2/2b/QR_icon.svg') no-repeat center center; background-size: contain; margin-left: 10px; transition: transform 0.3s; cursor: pointer; }
-    .qr-icon:hover { transform: scale(1.2); }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        header h1 { font-size: 1.3em; }
-        .content { width: 90%; padding: 20px; }
-        .label-info span.label, .care-info span.label { width: 120px; }
+    /* Global */
+    body { 
+        font-family: Arial, sans-serif;
+        background: #f1f1f1; 
+        margin: 0; 
+        padding: 0; 
+        color: #333; 
     }
 
-    @media (max-width: 500px) {
-        header { flex-direction: column; text-align: center; padding: 15px; }
-        header img { margin-bottom: 10px; }
-        nav a { margin: 5px 8px; font-size: 0.95em; }
-        .label-info span.label, .care-info span.label { width: 100%; margin-bottom: 5px; }
-        .label-info p, .care-info p { flex-direction: column; align-items: flex-start; }
+    /* Header */
+    header { 
+        background: #111; 
+        color: #fff; 
+        padding: 15px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        flex-wrap: wrap;
+        border-bottom: 3px solid #ffcc00;
+    }
+
+    header img { 
+        height: 55px; 
+        margin-right: 15px; 
+    }
+
+    header h1 { 
+        margin: 0; 
+        font-size: 1.4em; 
+        font-weight: 600;
+        text-align: center;
+    }
+
+    /* Navigation */
+    nav { 
+        background: #222; 
+        padding: 12px 5px; 
+        display: flex; 
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    nav a { 
+        color: white; 
+        text-decoration: none; 
+        font-weight: bold; 
+        font-size: 0.95em; 
+        padding: 6px 12px;
+        border-radius: 6px;
+        transition: 0.2s;
+    }
+
+    nav a:hover { 
+        background: #ffcc00; 
+        color: #111; 
+    }
+
+    /* Main Container */
+    .content { 
+        max-width: 750px;
+        margin: 25px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+
+    h2 { 
+        text-align: center; 
+        color: #222; 
+        margin-bottom: 20px; 
+        font-size: 1.3em; 
+        font-weight: bold;
+    }
+
+    /* Info Layout */
+    .info-block p { 
+        display: flex;
+        margin: 10px 0;
+        font-size: 1em;
+        flex-wrap: wrap;
+    }
+
+    .label { 
+        font-weight: bold; 
+        width: 150px;
+        color: #444; 
+    }
+
+    .warning { 
+        color: red; 
+        font-weight: bold; 
+    }
+
+    /* QR code */
+    .qr-container { 
+        display: flex; 
+        justify-content: center; 
+        margin: 20px 0;
+    }
+
+    .qr-icon { 
+        width: 70px; 
+        height: 70px;
+        background: url('https://upload.wikimedia.org/wikipedia/commons/2/2b/QR_icon.svg') no-repeat center;
+        background-size: contain;
+        cursor: pointer;
+        transition: 0.25s;
+    }
+
+    .qr-icon:hover { 
+        transform: scale(1.15); 
+    }
+
+    /* Mobile Fixes */
+    @media (max-width: 600px) {
+
+        header { 
+            flex-direction: column;
+            text-align: center;
+        }
+
+        header img {
+            margin: 0 0 10px 0;
+        }
+
+        .content {
+            width: 92%;
+            padding: 20px;
+        }
+
+        .info-block p {
+            flex-direction: column;
+        }
+
+        .label {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+        nav a {
+            font-size: 0.9em;
+            padding: 8px 10px;
+        }
     }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -64,30 +169,34 @@
 </nav>
 
 <div class="content">
+
     <h2>Visible When Worn / Brand Side</h2>
-    <div class="label-info">
+
+    <div class="info-block">
         <p><span class="label">Brand:</span> MOOSE</p>
         <p><span class="label">Product:</span> SHORT SLEEVE T-SHIRT</p>
         <p><span class="label">Size:</span> M</p>
         <p><span class="label">Material:</span> 100% COTTON</p>
-        <p><span class="label">Made in:</span> SRI LANKA</p>
+        <p><span class="label">Made in:</span> Sri Lanka</p>
         <p><span class="label">RN:</span> 123456</p>
     </div>
 
     <h2>Care Instructions</h2>
-    <div class="care-info">
-        <p><span class="label">WASH:</span> MACHINE WASH COLD (≤ 30°C)</p>
-        <p><span class="label">BLEACH:</span> DO NOT BLEACH</p>
-        <p><span class="label">DRY:</span> TUMBLE DRY LOW</p>
-        <p><span class="label">IRON:</span> MEDIUM (MAX 150°C)</p>
-        <p><span class="label">DRY CLEAN:</span> DO NOT DRY CLEAN</p>
-        <p><span class="label">WRING:</span> DO NOT WRING</p>
-        <p class="warning"><span class="label">FIRE:</span> KEEP AWAY FROM FIRE</p>
+
+    <div class="info-block">
+        <p><span class="label">WASH:</span> Machine wash cold (≤ 30°C)</p>
+        <p><span class="label">BLEACH:</span> Do not bleach</p>
+        <p><span class="label">DRY:</span> Tumble dry low</p>
+        <p><span class="label">IRON:</span> Medium iron (≤ 150°C)</p>
+        <p><span class="label">DRY CLEAN:</span> Do not dry clean</p>
+        <p><span class="label">WRING:</span> Do not wring</p>
+        <p class="warning"><span class="label">FIRE:</span> Keep away from fire</p>
     </div>
 
     <div class="qr-container">
-        <div class="qr-icon" title="Scan QR Code"></div>
+        <div class="qr-icon"></div>
     </div>
+
 </div>
 
 </body>
