@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moose T-Shirt Shops</title>
+<style>
+    /* Global Styles */
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f4f4; margin:0; padding:0; color: #333; }
+
+    /* Header */
+    header { background: #222; color: #fff; padding: 15px 20px; display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; }
+    header img { height: 50px; margin-right: 15px; }
+    header h1 { margin:0; font-size:1.5em; flex: 1 1 200px; text-align:center; }
+
+    /* Navigation Bar */
+    nav { background: #333; padding: 10px 20px; display: flex; flex-wrap: wrap; justify-content: center; }
+    nav a { color: #fff; text-decoration: none; margin: 5px 15px; font-weight: bold; transition: color 0.2s; }
+    nav a:hover { color: #ffcc00; }
+
+    /* Filters */
+    .filters { text-align:center; margin: 20px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    select { padding: 8px; font-size: 1em; min-width: 150px; }
+
+    /* Shop Cards Container */
+    .shop-container { display: flex; flex-wrap: wrap; justify-content: center; margin: 10px; gap: 15px; }
+
+    /* Shop Cards */
+    .shop-card { background: #fff; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); width: 280px; padding: 20px; transition: transform 0.2s; }
+    .shop-card:hover { transform: translateY(-3px); }
+    .shop-card h3 { margin-top: 0; color: #222; font-size: 1.2em; }
+    .shop-card p { margin: 5px 0; font-size: 0.95em; line-height: 1.4; }
+    .shop-card a { color: #007BFF; text-decoration: none; }
+    .shop-card a:hover { text-decoration: underline; }
+
+    /* Labels and badges */
+    .label { font-weight: bold; color: #555; display:inline-block; width:120px; }
+    .sizes, .colors { display: flex; flex-wrap: wrap; margin-top: 5px; }
+    .sizes span { background: #eee; border-radius: 4px; padding: 3px 6px; margin: 3px; font-size: 0.8em; }
+
+    /* Color Dots */
+    .color-dot { display: inline-block; width: 15px; height: 15px; border-radius: 50%; margin: 3px; border: 1px solid #ccc; }
+
+    /* QR Icon placeholder for future use */
+    .qr-icon { width: 60px; height: 60px; background: url('https://upload.wikimedia.org/wikipedia/commons/2/2b/QR_icon.svg') no-repeat center center; background-size: contain; margin-left: 10px; transition: transform 0.3s; cursor: pointer; }
+    .qr-icon:hover { transform: scale(1.2); }
+
+    /* Warning style */
+    .warning { color: red; font-weight: bold; }
+
+    /* Error message */
+    #noShopsMessage { text-align: center; color: red; font-weight: bold; margin-top: 20px; display: none; font-size: 1.1em; }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) { .shop-card { width: 45%; } }
+    @media (max-width: 500px) { 
+        header h1 { font-size: 1.2em; } 
+        .shop-card { width: 90%; } 
+        .label { width: 100px; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKCSXc039TSXrlop1Qlx6XLaTfL7aGz49NzA&s" alt="Moose Logo">
+    <h1>Moose Short-Sleeve T-Shirt Shops</h1>
+</header>
+
+<nav>
+    <a href="mooseshop.html">Shops</a>
+    <a href="moosecare.html">Care Instructions</a>
+    <a href="moosejustdropped.html">Just Dropped</a>
+</nav>
+
+<!-- Filters -->
+<div class="filters">
+    <label for="townSelect"><strong>Town:</strong></label>
+    <select id="townSelect" onchange="filterShops()">
+        <option value="">--All Towns--</option>
+        <option value="Nugegoda">Nugegoda</option>
+        <option value="Kottawa">Kottawa</option>
+        <option value="Maharagama">Maharagama</option>
+    </select>
+
+    <label for="sizeSelect"><strong>Size:</strong></label>
+    <select id="sizeSelect" onchange="filterShops()">
+        <option value="">--Any Size--</option>
+        <option value="XS">XS</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+    </select>
+
+    <label for="colorSelect"><strong>Color:</strong></label>
+    <select id="colorSelect" onchange="filterShops()">
+        <option value="">--Any Color--</option>
+        <option value="Classic White">Classic White</option>
+        <option value="Jet Black">Jet Black</option>
+        <option value="Heather Grey">Heather Grey</option>
+        <option value="Charcoal">Charcoal</option>
+        <option value="Navy Blue">Navy Blue</option>
+    </select>
+</div>
+
+<div class="shop-container" id="shopsContainer">
+
+<!-- Nugegoda Shops -->
+<div class="shop-card" data-town="Nugegoda" data-sizes="S,M,L,XL" data-colors="Classic White,Jet Black,Navy Blue">
+    <h3>Cool Planet – Nugegoda</h3>
+    <p><span class="label">Address:</span> 27 S. De S. Jayasinghe Mawatha, Nugegoda</p>
+    <p><span class="label">Phone:</span> +94 11 250 5190</p>
+    <p><span class="label">Map:</span> <a href="https://www.google.com/maps/search/?api=1&query=Cool+Planet+Nugegoda" target="_blank">View Map</a></p>
+    <p class="label">Available Sizes:</p>
+    <div class="sizes"><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+    <p class="label">Available Colors:</p>
+    <div class="colors">
+        <div class="color-dot" style="background-color:white;" title="Classic White"></div>
+        <div class="color-dot" style="background-color:black;" title="Jet Black"></div>
+        <div class="color-dot" style="background-color:navy;" title="Navy Blue"></div>
+    </div>
+</div>
+
+<div class="shop-card" data-town="Nugegoda" data-sizes="M,L,XL" data-colors="Charcoal,Heather Grey">
+    <h3>Fashion Hub – Nugegoda</h3>
+    <p><span class="label">Address:</span> 15/1, R.A. De Mel Mawatha, Nugegoda</p>
+    <p><span class="label">Phone:</span> +94 11 254 1234</p>
+    <p><span class="label">Map:</span> <a href="https://www.google.com/maps/search/?api=1&query=Fashion+Hub+Nugegoda" target="_blank">View Map</a></p>
+    <p class="label">Available Sizes:</p>
+    <div class="sizes"><span>M</span><span>L</span><span>XL</span></div>
+    <p class="label">Available Colors:</p>
+    <div class="colors">
+        <div class="color-dot" style="background-color:#36454F;" title="Charcoal"></div>
+        <div class="color-dot" style="background-color:#BEBEBE;" title="Heather Grey"></div>
+    </div>
+</div>
+
+<div class="shop-card" data-town="Nugegoda" data-sizes="S,M,L" data-colors="Classic White,Jet Black">
+    <h3>Trendy Wear – Nugegoda</h3>
+    <p><span class="label">Address:</span> 32 High-Level Road, Nugegoda</p>
+    <p><span class="label">Phone:</span> +94 11 259 5678</p>
+    <p><span class="label">Map:</span> <a href="https://www.google.com/maps/search/?api=1&query=Trendy+Wear+Nugegoda" target="_blank">View Map</a></p>
+    <p class="label">Available Sizes:</p>
+    <div class="sizes"><span>S</span><span>M</span><span>L</span></div>
+    <p class="label">Available Colors:</p>
+    <div class="colors">
+        <div class="color-dot" style="background-color:white;" title="Classic White"></div>
+        <div class="color-dot" style="background-color:black;" title="Jet Black"></div>
+    </div>
+</div>
+
+<!-- Kottawa Shops -->
+<div class="shop-card" data-town="Kottawa" data-sizes="S,M,L" data-colors="Jet Black,Charcoal">
+    <h3>ZENN Clothing Store – Kottawa</h3>
+    <p><span class="label">Address:</span> 346/1, Mahalwarawa, High-Level Road, Kottawa</p>
+    <p><span class="label">Phone:</span> 077 880 1916 / 077 389 1916</p>
+    <p><span class="label">Map:</span> <a href="https://www.google.com/maps/search/?api=1&query=ZENN+Clothing+Store+Kottawa" target="_blank">View Map</a></p>
+    <p class="label">Available Sizes:</p>
+    <div class="sizes"><span>S</span><span>M</span><span>L</span></div>
+    <p class="label">Available Colors:</p>
+    <div class="colors">
+        <div class="color-dot" style="background-color:black;" title="Jet Black"></div>
+        <div class="color-dot" style="background-color:#36454F;" title="Charcoal"></div>
+    </div>
+</div>
+
+<div class="shop-card" data-town="Kottawa" data-sizes="M,L,XL" data-colors="Classic White,Navy Blue">
+    <h3>Urban Closet – Kottawa</h3>
+    <p><span class="label">Address:</span> 45/7 High-Level Road, Kottawa</p>
+    <p><span class="label">Phone:</span> +94 77 456 7890</p>
+    <p><span class="label">Map:</span> <a href="https://www.google.com/maps/search/?api=1&query=Urban+Closet+Kottawa" target="_blank">View Map</a></p>
+    <p class="label">Available Sizes:</p>
+    <div class="sizes"><span>M</span><span>L</span><span>XL</span></div>
+    <p class="label">Available Colors:</p>
+    <div class="colors">
+        <div class="color-dot" style="background-color:white;" title="Classic White"></div>
+        <div class="color-dot" style="background-color:navy;" title="Navy Blue"></div>
+    </div>
+</div>
+
+<div class="shop-card" data-town="Kottawa" data-sizes="S,L,XL" data-colors="Charcoal,Heather Grey">
+    <h3>Style Point – Kottawa</h3>
+    <p><span class="label">Address:</span> 12/3 High-Level Road, Kottawa</p>
+    <p><span class="label">Phone:</span> +94 77 987 6543</p>
+    <p><span class="label">Map:</span> <a href="https://www.google.com/maps/search/?api=1&query=Style+Point+Kottawa" target="_blank">View Map</a></p>
+    <p class="label">Available Sizes:</p>
+    <div class="sizes"><span>S</span><span>L</span><span>XL</span></div>
+    <p class="label">Available Colors:</p>
+    <div class="colors">
+        <div class="color-dot" style="background-color:#36454F;" title="Charcoal"></div>
+        <div class="color-dot" style="background-color:#BEBEBE;" title="Heather Grey"></div>
+    </div>
+</div>
+
+<!-- Maharagama Shops -->
+<div class="shop-card" data-town="Maharagama" data-sizes="S,M,XL" data-colors="Classic White,Charcoal">
+    <h3>May Fashion – Maharagama</h3>
+    <p><span class="label">Address:</span> No. 130, Pamunuwa Road, Maharagama</p>
+    <p><span class="label">Phone:</span> 077 501 1979</p>
+    <p><span class="label">Map:</span> <a href="https://www.google.com/maps/search/?api=1&query=May+Fashion+Maharagama" target="_blank">View Map</a></p>
+    <p class="label">Available Sizes:</p>
+    <div class="sizes"><span>S</span><span>M</span><span>XL</span></div>
+    <p class="label">Available Colors:</p>
+    <div class="colors">
+        <div class="color-dot" style="background-color:white;" title="Classic White"></div>
+        <div class="color-dot" style="background-color:#36454F;" title="Charcoal"></div>
+    </div>
+</div>
+
+<div class="shop-card" data-town="Maharagama" data-sizes="M,L,XL" data-colors="Jet Black,Navy Blue">
+    <h3>Fashion Factory – Maharagama</h3>
+    <p><span class="label">Address:</span> 55/4 High-Level Road, Maharagama</p>
+    <p><span class="label">Phone:</span> +94 77 123 4567</p>
+    <p><span class="label">Map:</span> <a href="https://www.google.com/maps/search/?api=1&query=Fashion+Factory+Maharagama" target="_blank">View Map</a></p>
+    <p class="label">Available Sizes:</p>
+    <div class="sizes"><span>M</span><span>L</span><span>XL</span></div>
+    <p class="label">Available Colors:</p>
+    <div class="colors">
+        <div class="color-dot" style="background-color:black;" title="Jet Black"></div>
+        <div class="color-dot" style="background-color:navy;" title="Navy Blue"></div>
+    </div>
+</div>
+
+<div class="shop-card" data-town="Maharagama" data-sizes="S,M,L" data-colors="Classic White,Heather Grey">
+    <h3>Trendsetters – Maharagama</h3>
+    <p><span class="label">Address:</span> 78/6 High-Level Road, Maharagama</p>
+    <p><span class="label">Phone:</span> +94 77 890 1234</p>
+    <p><span class="label">Map:</span> <a href="https://www.google.com/maps/search/?api=1&query=Trendsetters+Maharagama" target="_blank">View Map</a></p>
+    <p class="label">Available Sizes:</p>
+    <div class="sizes"><span>S</span><span>M</span><span>L</span></div>
+    <p class="label">Available Colors:</p>
+    <div class="colors">
+        <div class="color-dot" style="background-color:white;" title="Classic White"></div>
+        <div class="color-dot" style="background-color:#BEBEBE;" title="Heather Grey"></div>
+    </div>
+</div>
+
+</div>
+
+<div id="noShopsMessage">❌ No shops found matching your filters!</div>
+
+<script>
+function filterShops() {
+    const town = document.getElementById("townSelect").value;
+    const size = document.getElementById("sizeSelect").value;
+    const color = document.getElementById("colorSelect").value;
+
+    const shops = document.querySelectorAll(".shop-card");
+    let anyVisible = false;
+
+    shops.forEach(shop => {
+        const shopTown = shop.dataset.town;
+        const shopSizes = shop.dataset.sizes.split(",");
+        const shopColors = shop.dataset.colors.split(",");
+
+        let show = true;
+        if (town && shopTown !== town) show = false;
+        if (size && !shopSizes.includes(size)) show = false;
+        if (color && !shopColors.includes(color)) show = false;
+
+        shop.style.display = show ? "block" : "none";
+        if(show) anyVisible = true;
+    });
+
+    document.getElementById("noShopsMessage").style.display = anyVisible ? "none" : "block";
+}
+</script>
+
+</body>
+</html>

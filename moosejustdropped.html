@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moose Just Dropped Products</title>
+<style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f4f4; margin:0; padding:0; color: #333; }
+    
+    header { background: #222; color: #fff; padding: 15px 20px; display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; }
+    header img { height: 50px; margin-right: 15px; }
+    header h1 { margin:0; font-size:1.5em; flex:1 1 200px; text-align:center; }
+
+    nav { background: #333; padding: 10px 20px; display: flex; flex-wrap: wrap; justify-content: center; }
+    nav a { color: #fff; text-decoration: none; margin: 5px 15px; font-weight: bold; transition: color 0.2s; }
+    nav a:hover { color: #ffcc00; }
+
+    .container { max-width: 1200px; margin: 20px auto; padding: 0 10px; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+
+    .product-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s; min-height: 580px; }
+    .product-card:hover { transform: translateY(-5px); }
+    .product-card img { width: 100%; height: 300px; object-fit: cover; display: block; }
+    .product-content { padding: 15px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .product-content h3 { margin: 0 0 10px 0; font-size: 1.1em; color: #222; }
+    .product-content p.price { font-weight: bold; color: #e60000; margin: 5px 0; }
+
+    .color-swatches { display: flex; margin: 8px 0; }
+    .swatch { width: 20px; height: 20px; border-radius: 50%; margin-right: 6px; border: 1px solid #ccc; }
+
+    .collapsible { background-color: #f1f1f1; color: #444; cursor: pointer; padding: 10px; width: 100%; border: none; text-align: left; outline: none; font-size: 0.95em; border-radius: 5px; margin-top: 10px; }
+    .active, .collapsible:hover { background-color: #ddd; }
+    .collapsible:after { content: '\002B'; font-weight: bold; float: right; }
+    .active:after { content: "\2212"; }
+    .content-collapsible { padding: 0 15px; display: none; overflow: hidden; background-color: #f9f9f9; border-left: 3px solid #007BFF; margin-bottom: 10px; border-radius: 5px; }
+
+    @media(max-width: 500px){ 
+        header h1 { font-size: 1.2em; } 
+        .product-card { min-height: auto; }
+        .product-card img { height: 200px; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKCSXc039TSXrlop1Qlx6XLaTfL7aGz49NzA&s" alt="Moose Logo">
+    <h1>Moose Just Dropped</h1>
+</header>
+
+<nav>
+    <a href="mooseshop.html">Shops</a>
+    <a href="moosecare.html">Care Instructions</a>
+    <a href="moosejustdropped.html">Just Dropped</a>
+
+</nav>
+
+<div class="container">
+    <div class="product-grid">
+
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="https://bunny-wp-pullzone-mllt3vlaxc.b-cdn.net/wp-content/uploads/2025/10/M5T01-COVER-1024x1536.jpg" alt="Moose Dusky Charm Polo T-Shirts">
+            <div class="product-content">
+                <div>
+                    <h3>Moose Dusky Charm Polo T-Shirts</h3>
+                    <p class="price">2,490 LKR</p>
+                    <div class="color-swatches">
+                        <div class="swatch" style="background-color:#000;"></div>
+                        <div class="swatch" style="background-color:#fff;"></div>
+                        <div class="swatch" style="background-color:#f00;"></div>
+                    </div>
+                    <button class="collapsible">View Details</button>
+                    <div class="content-collapsible">
+                        <p><strong>Fabric:</strong> 100% Cotton, Solid denim fabric</p>
+                        <p><strong>Care:</strong> Machine wash | Follow instructions</p>
+                        <p><strong>Features:</strong> Mid Rise Waist, Regular Fit, Above Ankle Length, Flat Front, Five-pocket styling, Centre front metal shank with zip fly</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <img src="https://bunny-wp-pullzone-mllt3vlaxc.b-cdn.net/wp-content/uploads/2025/10/M221-COVER-1024x1536.jpg" alt="Men’s Premium Shorts">
+            <div class="product-content">
+                <div>
+                    <h3>Men’s Premium Shorts</h3>
+                    <p class="price">2,890 LKR</p>
+                    <div class="color-swatches">
+                        <div class="swatch" style="background-color:#008000;"></div>
+                        <div class="swatch" style="background-color:#0000ff;"></div>
+                    </div>
+                    <button class="collapsible">View Details</button>
+                    <div class="content-collapsible">
+                        <p><strong>Fabric:</strong> 100% Cotton, Solid denim fabric</p>
+                        <p><strong>Care:</strong> Machine wash | Follow instructions</p>
+                        <p><strong>Features:</strong> Mid Rise Waist, Regular Fit, Above Ankle Length, Flat Front, Five-pocket styling, Centre front metal shank with zip fly</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <img src="https://bunny-wp-pullzone-mllt3vlaxc.b-cdn.net/wp-content/uploads/2025/10/CHB05182-1024x1536.jpg" alt="Women’s Cargo Jogger Pants">
+            <div class="product-content">
+                <div>
+                    <h3>Women’s Cargo Jogger Pants</h3>
+                    <p class="price">4,190 LKR</p>
+                    <div class="color-swatches">
+                        <div class="swatch" style="background-color:#555;"></div>
+                        <div class="swatch" style="background-color:#ffcc00;"></div>
+                    </div>
+                    <button class="collapsible">View Details</button>
+                    <div class="content-collapsible">
+                        <p><strong>Fabric:</strong> 100% Cotton</p>
+                        <p><strong>Care:</strong> Machine wash | Follow instructions</p>
+                        <p><strong>Features:</strong> Mid Rise Waist, Regular Fit, Above Ankle Length, Flat Front, Five-pocket styling, Centre front metal shank with zip fly</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="https://bunny-wp-pullzone-mllt3vlaxc.b-cdn.net/wp-content/uploads/2025/03/CHB01812-1025x1536.jpg" alt="Retro Revival Printed Crew Neck T-shirt">
+            <div class="product-content">
+                <div>
+                    <h3>Retro Revival Printed Crew Neck T-shirt</h3>
+                    <p class="price">1,290 LKR</p>
+                    <div class="color-swatches">
+                        <div class="swatch" style="background-color:#fff;"></div>
+                        <div class="swatch" style="background-color:#000;"></div>
+                    </div>
+                    <button class="collapsible">View Details</button>
+                    <div class="content-collapsible">
+                        <p><strong>Fabric:</strong> 100% Cotton (demo)</p>
+                        <p><strong>Care:</strong> Machine wash | Follow instructions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+            <img src="https://bunny-wp-pullzone-mllt3vlaxc.b-cdn.net/wp-content/uploads/2024/07/M602-STRIPE-3001-2-684x1024.jpg" alt="Women’s Slim Fit T-Shirts">
+            <div class="product-content">
+                <div>
+                    <h3>Women’s Slim Fit T-Shirts</h3>
+                    <p class="price">990 LKR</p>
+                    <div class="color-swatches">
+                        <div class="swatch" style="background-color:#f2f2f2;"></div>
+                        <div class="swatch" style="background-color:#ff69b4;"></div>
+                    </div>
+                    <button class="collapsible">View Details</button>
+                    <div class="content-collapsible">
+                        <p><strong>Fabric:</strong> 100% Cotton (demo)</p>
+                        <p><strong>Care:</strong> Machine wash | Follow instructions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+            <img src="https://bunny-wp-pullzone-mllt3vlaxc.b-cdn.net/wp-content/uploads/2025/02/CHB09617-1025x1536.jpg" alt="Women’s Denim Skirt – Indigo">
+            <div class="product-content">
+                <div>
+                    <h3>Women’s Denim Skirt – Indigo</h3>
+                    <p class="price">3,990 LKR</p>
+                    <div class="color-swatches">
+                        <div class="swatch" style="background-color:#00008b;"></div>
+                        <div class="swatch" style="background-color:#1e90ff;"></div>
+                    </div>
+                    <button class="collapsible">View Details</button>
+                    <div class="content-collapsible">
+                        <p><strong>Fabric:</strong> 100% Cotton (demo)</p>
+                        <p><strong>Care:</strong> Machine wash | Follow instructions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card">
+            <img src="https://bunny-wp-pullzone-mllt3vlaxc.b-cdn.net/wp-content/uploads/2025/06/BLUE-2.png" alt="Cricket replica ODI Hat – Navy Blue">
+            <div class="product-content">
+                <div>
+                    <h3>Cricket replica ODI Hat – Navy Blue</h3>
+                    <p class="price">2,490 LKR</p>
+                    <div class="color-swatches">
+                        <div class="swatch" style="background-color:#000080;"></div>
+                        <div class="swatch" style="background-color:#ffffff;"></div>
+                    </div>
+                    <button class="collapsible">View Details</button>
+                    <div class="content-collapsible">
+                        <p><strong>Fabric:</strong> Cotton blend (demo)</p>
+                        <p><strong>Care:</strong> Machine wash | Follow instructions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card">
+            <img src="https://bunny-wp-pullzone-mllt3vlaxc.b-cdn.net/wp-content/uploads/2024/05/M801-FAIRY-RED-new-1024x1536.jpg" alt="Sweaters">
+            <div class="product-content">
+                <div>
+                    <h3>Sweaters</h3>
+                    <p class="price">2,890 LKR</p>
+                    <div class="color-swatches">
+                        <div class="swatch" style="background-color:#ff0000;"></div>
+                        <div class="swatch" style="background-color:#000000;"></div>
+                    </div>
+                    <button class="collapsible">View Details</button>
+                    <div class="content-collapsible">
+                        <p><strong>Fabric:</strong> 100% Cotton (demo)</p>
+                        <p><strong>Care:</strong> Machine wash | Follow instructions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    const coll = document.getElementsByClassName("collapsible");
+    for (let i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            const content = this.nextElementSibling;
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        });
+    }
+</script>
+
+</body>
+</html>
