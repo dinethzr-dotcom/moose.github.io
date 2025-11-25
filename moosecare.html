@@ -5,49 +5,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Care Instruction for this Product</title>
 <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f4f4; margin:0; padding:0; color: #333; }
+    body { font-family: Arial, sans-serif; background: #f9f9f9; margin:0; padding:0; color: #333; }
 
     /* Header */
-    header { background: #222; color: #fff; padding: 15px 20px; display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; }
+    header { background: #333; color: #fff; padding: 10px 20px; display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; }
     header img { height: 50px; margin-right: 15px; flex: 0 0 auto; }
-    header h1 { margin:0; font-size:1.5em; flex: 1 1 200px; text-align:center; }
+    header h1 { margin: 0; font-size: 1.5em; flex: 1 1 200px; text-align: center; }
 
     /* Navigation Bar */
-    nav { background: #333; padding: 10px 20px; display: flex; flex-wrap: wrap; justify-content: center; }
+    nav { background: #444; padding: 10px 20px; display: flex; flex-wrap: wrap; justify-content: center; }
     nav a { color: #fff; text-decoration: none; margin: 5px 15px; font-weight: bold; transition: color 0.2s; }
     nav a:hover { color: #ffcc00; }
 
     /* Main content */
-    .content { max-width: 600px; margin: 30px auto; background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    .content { max-width: 700px; margin: 25px auto; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 3px 12px rgba(0,0,0,0.15); }
 
-    h2 { text-align: center; color: #222; margin-bottom: 20px; }
+    h2 { text-align: center; color: #222; margin-bottom: 20px; font-size: 1.4em; }
 
     .label-info, .care-info { margin-bottom: 25px; }
-    .label-info p, .care-info p { margin: 10px 0; font-size: 1em; line-height: 1.5; display: flex; align-items: center; flex-wrap: wrap; }
-    .label-info span.label, .care-info span.label { font-weight: bold; color: #555; width: 150px; flex: 0 0 auto; }
+    .label-info p, .care-info p { margin: 8px 0; font-size: 1em; line-height: 1.5; display: flex; flex-wrap: wrap; }
+    .label-info span.label, .care-info span.label { font-weight: bold; color: #555; width: 140px; flex: 0 0 auto; }
+
+    /* Highlight fire warning */
+    .warning { color: red; font-weight: bold; }
 
     /* QR Section */
     .qr-container { display: flex; align-items: center; justify-content: center; margin: 15px 0; }
     .qr-icon { width: 60px; height: 60px; background: url('https://upload.wikimedia.org/wikipedia/commons/2/2b/QR_icon.svg') no-repeat center center; background-size: contain; margin-left: 10px; transition: transform 0.3s; cursor: pointer; }
     .qr-icon:hover { transform: scale(1.2); }
 
-    /* Highlight fire warning */
-    .warning { color: red; font-weight: bold; }
-
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
+    /* Responsive */
+    @media (max-width: 768px) {
+        header h1 { font-size: 1.3em; }
         .content { width: 90%; padding: 20px; }
-        .label-info span.label, .care-info span.label { width: 100%; margin-bottom: 5px; }
-        .label-info p, .care-info p { flex-direction: column; text-align: left; }
-        header h1 { font-size: 1.2em; margin-top: 10px; }
-        nav a { margin: 5px 8px; font-size: 0.95em; }
+        .label-info span.label, .care-info span.label { width: 120px; }
     }
 
-    @media (max-width: 400px) {
-        header img { height: 40px; }
-        .qr-icon { width: 50px; height: 50px; }
-        .content { padding: 15px; }
-        h2 { font-size: 1.1em; }
+    @media (max-width: 500px) {
+        header { flex-direction: column; text-align: center; padding: 15px; }
+        header img { margin-bottom: 10px; }
+        nav a { margin: 5px 8px; font-size: 0.95em; }
+        .label-info span.label, .care-info span.label { width: 100%; margin-bottom: 5px; }
+        .label-info p, .care-info p { flex-direction: column; align-items: flex-start; }
     }
 </style>
 </head>
@@ -87,7 +86,7 @@
     </div>
 
     <div class="qr-container">
-        <div class="qr-icon" title="Scan QR for more info"></div>
+        <div class="qr-icon" title="Scan QR Code"></div>
     </div>
 </div>
 
