@@ -9,7 +9,7 @@
 
     /* Header */
     header { background: #222; color: #fff; padding: 15px 20px; display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; }
-    header img { height: 50px; margin-right: 15px; }
+    header img { height: 50px; margin-right: 15px; flex: 0 0 auto; }
     header h1 { margin:0; font-size:1.5em; flex: 1 1 200px; text-align:center; }
 
     /* Navigation Bar */
@@ -23,25 +23,31 @@
     h2 { text-align: center; color: #222; margin-bottom: 20px; }
 
     .label-info, .care-info { margin-bottom: 25px; }
-    .label-info p, .care-info p { margin: 10px 0; font-size: 1em; line-height: 1.5; }
-    .label-info span.label, .care-info span.label { font-weight: bold; color: #555; }
+    .label-info p, .care-info p { margin: 10px 0; font-size: 1em; line-height: 1.5; display: flex; align-items: center; flex-wrap: wrap; }
+    .label-info span.label, .care-info span.label { font-weight: bold; color: #555; width: 150px; flex: 0 0 auto; }
 
     /* QR Section */
     .qr-container { display: flex; align-items: center; justify-content: center; margin: 15px 0; }
     .qr-icon { width: 60px; height: 60px; background: url('https://upload.wikimedia.org/wikipedia/commons/2/2b/QR_icon.svg') no-repeat center center; background-size: contain; margin-left: 10px; transition: transform 0.3s; cursor: pointer; }
     .qr-icon:hover { transform: scale(1.2); }
 
-    /* Care instruction icons */
-    .care-info p span.label { display: inline-block; width: 120px; }
-    .care-info p { display: flex; align-items: center; }
-
     /* Highlight fire warning */
     .warning { color: red; font-weight: bold; }
 
-    /* Responsive */
-    @media (max-width: 500px) {
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
         .content { width: 90%; padding: 20px; }
-        .care-info p span.label { width: 100px; }
+        .label-info span.label, .care-info span.label { width: 100%; margin-bottom: 5px; }
+        .label-info p, .care-info p { flex-direction: column; text-align: left; }
+        header h1 { font-size: 1.2em; margin-top: 10px; }
+        nav a { margin: 5px 8px; font-size: 0.95em; }
+    }
+
+    @media (max-width: 400px) {
+        header img { height: 40px; }
+        .qr-icon { width: 50px; height: 50px; }
+        .content { padding: 15px; }
+        h2 { font-size: 1.1em; }
     }
 </style>
 </head>
@@ -70,7 +76,7 @@
     </div>
 
     <h2>Care Instructions</h2>
-
+    <div class="care-info">
         <p><span class="label">WASH:</span> MACHINE WASH COLD (≤ 30°C)</p>
         <p><span class="label">BLEACH:</span> DO NOT BLEACH</p>
         <p><span class="label">DRY:</span> TUMBLE DRY LOW</p>
@@ -79,8 +85,11 @@
         <p><span class="label">WRING:</span> DO NOT WRING</p>
         <p class="warning"><span class="label">FIRE:</span> KEEP AWAY FROM FIRE</p>
     </div>
+
+    <div class="qr-container">
+        <div class="qr-icon" title="Scan QR for more info"></div>
+    </div>
 </div>
 
 </body>
 </html>
-
