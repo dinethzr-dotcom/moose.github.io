@@ -7,67 +7,67 @@
 
 <style>
 body{
-    font-family:'Segoe UI',sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     margin:0;
-    background:#f5f5f5;
+    background:#f4f4f4;
+    color:#333;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 header{
-    background:linear-gradient(90deg,#111,#333);
+    background:linear-gradient(90deg,#222,#444);
+    color:white;
     display:flex;
     align-items:center;
+    justify-content:space-between;
     padding:15px 30px;
+    flex-wrap:wrap;
 }
+header img{height:55px;border-radius:8px;}
+header h1{flex:1;text-align:center;margin:0;font-size:1.8rem;}
 
-header img{
-    height:55px;
-    border-radius:6px;
-}
-
-header h1{
-    flex:1;
-    text-align:center;
-    color:white;
-    margin:0;
-}
-
-/* NAV */
+/* ================= NAVBAR ================= */
 nav{
-    background:#222;
+    background:white;
     display:flex;
     justify-content:center;
     gap:40px;
-    padding:12px;
+    padding:12px 0;
+    box-shadow:0 3px 8px rgba(0,0,0,0.1);
 }
-
 nav a{
     text-decoration:none;
-    color:white;
+    color:#222;
     font-weight:600;
+    position:relative;
 }
-
-nav a:hover{
-    color:#ffcc00;
+nav a::after{
+    content:"";
+    position:absolute;
+    width:0%;
+    height:2px;
+    background:#ffcc00;
+    left:0;
+    bottom:-5px;
+    transition:0.3s;
 }
+nav a:hover::after{width:100%;}
 
-/* FILTER */
+/* ================= FILTERS ================= */
 .filters{
-    text-align:center;
-    margin:25px 0;
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
-    gap:10px;
+    gap:15px;
+    margin:25px 0;
 }
-
 select{
-    padding:8px;
+    padding:10px;
+    min-width:160px;
     border-radius:6px;
-    border:1px solid #ccc;
 }
 
-/* SHOP CARDS */
+/* ================= CARDS ================= */
 .shop-container{
     display:flex;
     flex-wrap:wrap;
@@ -75,55 +75,30 @@ select{
     gap:20px;
     padding:20px;
 }
-
 .shop-card{
     background:white;
     width:300px;
     padding:18px;
     border-radius:12px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.15);
-    transition:0.3s;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
 }
+.shop-card h3{margin-top:0;}
 
-.shop-card:hover{
-    transform:translateY(-5px);
-}
-
-.shop-card h3{
-    margin-top:0;
-}
-
-/* SIZE TAGS */
-.sizes span{
+.sizes span,
+.colors span{
     background:#eee;
     padding:4px 8px;
-    border-radius:4px;
-    font-size:0.8em;
     margin:3px;
+    border-radius:5px;
+    font-size:0.8em;
     display:inline-block;
-}
-
-/* COLOR TAGS */
-.color-tag{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    margin:4px;
-    font-size:0.85em;
-}
-
-.color-dot{
-    width:14px;
-    height:14px;
-    border-radius:50%;
-    border:1px solid #ccc;
 }
 
 iframe{
     width:100%;
-    height:170px;
-    border-radius:8px;
+    height:160px;
     border:0;
+    border-radius:8px;
     margin-top:10px;
 }
 
@@ -132,29 +107,23 @@ iframe{
     border:none;
     padding:10px;
     border-radius:6px;
+    cursor:pointer;
     font-weight:bold;
     margin-top:12px;
     width:100%;
-    cursor:pointer;
 }
+.preorder-btn:hover{background:#e6b800;}
 
-.preorder-btn:hover{
-    background:#e6b800;
-}
-
-/* MODAL */
+/* ================= MODAL ================= */
 .modal{
     display:none;
     position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
+    top:0;left:0;
+    width:100%;height:100%;
     background:rgba(0,0,0,0.6);
     justify-content:center;
     align-items:center;
 }
-
 .modal-content{
     background:white;
     padding:25px;
@@ -162,14 +131,12 @@ iframe{
     width:90%;
     max-width:400px;
 }
-
 .modal-content input,
 .modal-content select{
     width:100%;
     padding:10px;
     margin:8px 0;
 }
-
 .close-btn{
     float:right;
     cursor:pointer;
@@ -182,7 +149,6 @@ iframe{
     color:red;
     font-weight:bold;
     display:none;
-    margin-bottom:20px;
 }
 </style>
 </head>
@@ -195,11 +161,12 @@ iframe{
 </header>
 
 <nav>
-<a href="index.html">Available At</a>
-<a href="moosecare.html">Care Instructions</a>
-<a href="moosejustdropped.html">Just Dropped</a>
+<a href="#">Available At</a>
+<a href="#">Care Instructions</a>
+<a href="#">Just Dropped</a>
 </nav>
 
+<!-- FILTERS -->
 <div class="filters">
 <select id="townSelect" onchange="filterShops()">
 <option value="">--All Towns--</option>
@@ -226,134 +193,79 @@ iframe{
 
 <div class="shop-container">
 
-<!-- ================= NUGEGODA ================= -->
+<!-- 9 SHOPS (3 PER TOWN) -->
 
+<!-- Nugegoda -->
 <div class="shop-card" data-town="Nugegoda" data-sizes="S,M,L,XL" data-colors="Classic White,Jet Black">
 <h3>Cool Planet – Nugegoda</h3>
-<p>27 S. De S. Jayasinghe Mawatha</p>
-<b>Sizes:</b>
 <div class="sizes"><span>S</span><span>M</span><span>L</span><span>XL</span></div>
-<b>Colors:</b>
-<div>
-<div class="color-tag"><span class="color-dot" style="background:white;"></span>Classic White</div>
-<div class="color-tag"><span class="color-dot" style="background:black;"></span>Jet Black</div>
-</div>
+<div class="colors"><span>Classic White</span><span>Jet Black</span></div>
 <iframe src="https://www.google.com/maps?q=Cool+Planet+Nugegoda&output=embed"></iframe>
 <button onclick="openPreorder(this)" class="preorder-btn">Pre-Order</button>
 </div>
 
 <div class="shop-card" data-town="Nugegoda" data-sizes="M,L,XL" data-colors="Heather Grey,Navy Blue">
 <h3>Moose Streetwear – Nugegoda</h3>
-<p>Old Kesbewa Road</p>
-<b>Sizes:</b>
 <div class="sizes"><span>M</span><span>L</span><span>XL</span></div>
-<b>Colors:</b>
-<div>
-<div class="color-tag"><span class="color-dot" style="background:grey;"></span>Heather Grey</div>
-<div class="color-tag"><span class="color-dot" style="background:navy;"></span>Navy Blue</div>
-</div>
+<div class="colors"><span>Heather Grey</span><span>Navy Blue</span></div>
 <iframe src="https://www.google.com/maps?q=Nugegoda&output=embed"></iframe>
 <button onclick="openPreorder(this)" class="preorder-btn">Pre-Order</button>
 </div>
 
 <div class="shop-card" data-town="Nugegoda" data-sizes="XS,S,M" data-colors="Classic White,Charcoal">
 <h3>Urban Edge – Nugegoda</h3>
-<p>High-Level Road</p>
-<b>Sizes:</b>
 <div class="sizes"><span>XS</span><span>S</span><span>M</span></div>
-<b>Colors:</b>
-<div>
-<div class="color-tag"><span class="color-dot" style="background:white;"></span>Classic White</div>
-<div class="color-tag"><span class="color-dot" style="background:#36454F;"></span>Charcoal</div>
-</div>
+<div class="colors"><span>Classic White</span><span>Charcoal</span></div>
 <iframe src="https://www.google.com/maps?q=High+Level+Road+Nugegoda&output=embed"></iframe>
 <button onclick="openPreorder(this)" class="preorder-btn">Pre-Order</button>
 </div>
 
-<!-- ================= KOTTAWA ================= -->
-
+<!-- Kottawa -->
 <div class="shop-card" data-town="Kottawa" data-sizes="M,L,XL" data-colors="Jet Black,Navy Blue">
 <h3>ZENN Clothing – Kottawa</h3>
-<p>High-Level Road</p>
-<b>Sizes:</b>
 <div class="sizes"><span>M</span><span>L</span><span>XL</span></div>
-<b>Colors:</b>
-<div>
-<div class="color-tag"><span class="color-dot" style="background:black;"></span>Jet Black</div>
-<div class="color-tag"><span class="color-dot" style="background:navy;"></span>Navy Blue</div>
-</div>
+<div class="colors"><span>Jet Black</span><span>Navy Blue</span></div>
 <iframe src="https://www.google.com/maps?q=Kottawa&output=embed"></iframe>
 <button onclick="openPreorder(this)" class="preorder-btn">Pre-Order</button>
 </div>
 
 <div class="shop-card" data-town="Kottawa" data-sizes="S,M,L" data-colors="Classic White,Heather Grey">
 <h3>Trend Hub – Kottawa</h3>
-<p>Piliyandala Road</p>
-<b>Sizes:</b>
 <div class="sizes"><span>S</span><span>M</span><span>L</span></div>
-<b>Colors:</b>
-<div>
-<div class="color-tag"><span class="color-dot" style="background:white;"></span>Classic White</div>
-<div class="color-tag"><span class="color-dot" style="background:grey;"></span>Heather Grey</div>
-</div>
+<div class="colors"><span>Classic White</span><span>Heather Grey</span></div>
 <iframe src="https://www.google.com/maps?q=Piliyandala+Road+Kottawa&output=embed"></iframe>
 <button onclick="openPreorder(this)" class="preorder-btn">Pre-Order</button>
 </div>
 
 <div class="shop-card" data-town="Kottawa" data-sizes="L,XL,XXL" data-colors="Charcoal,Jet Black">
 <h3>Street Style – Kottawa</h3>
-<p>Kottawa Town Center</p>
-<b>Sizes:</b>
 <div class="sizes"><span>L</span><span>XL</span><span>XXL</span></div>
-<b>Colors:</b>
-<div>
-<div class="color-tag"><span class="color-dot" style="background:#36454F;"></span>Charcoal</div>
-<div class="color-tag"><span class="color-dot" style="background:black;"></span>Jet Black</div>
-</div>
+<div class="colors"><span>Charcoal</span><span>Jet Black</span></div>
 <iframe src="https://www.google.com/maps?q=Kottawa+Town&output=embed"></iframe>
 <button onclick="openPreorder(this)" class="preorder-btn">Pre-Order</button>
 </div>
 
-<!-- ================= MAHARAGAMA ================= -->
-
+<!-- Maharagama -->
 <div class="shop-card" data-town="Maharagama" data-sizes="S,M,L" data-colors="Classic White,Charcoal">
 <h3>Fashion Factory – Maharagama</h3>
-<p>High-Level Road</p>
-<b>Sizes:</b>
 <div class="sizes"><span>S</span><span>M</span><span>L</span></div>
-<b>Colors:</b>
-<div>
-<div class="color-tag"><span class="color-dot" style="background:white;"></span>Classic White</div>
-<div class="color-tag"><span class="color-dot" style="background:#36454F;"></span>Charcoal</div>
-</div>
+<div class="colors"><span>Classic White</span><span>Charcoal</span></div>
 <iframe src="https://www.google.com/maps?q=Maharagama&output=embed"></iframe>
 <button onclick="openPreorder(this)" class="preorder-btn">Pre-Order</button>
 </div>
 
 <div class="shop-card" data-town="Maharagama" data-sizes="M,L,XL" data-colors="Heather Grey,Navy Blue">
 <h3>Moose Wearhouse – Maharagama</h3>
-<p>Old Road Junction</p>
-<b>Sizes:</b>
 <div class="sizes"><span>M</span><span>L</span><span>XL</span></div>
-<b>Colors:</b>
-<div>
-<div class="color-tag"><span class="color-dot" style="background:grey;"></span>Heather Grey</div>
-<div class="color-tag"><span class="color-dot" style="background:navy;"></span>Navy Blue</div>
-</div>
+<div class="colors"><span>Heather Grey</span><span>Navy Blue</span></div>
 <iframe src="https://www.google.com/maps?q=Maharagama+High+Level+Road&output=embed"></iframe>
 <button onclick="openPreorder(this)" class="preorder-btn">Pre-Order</button>
 </div>
 
 <div class="shop-card" data-town="Maharagama" data-sizes="XS,S,M,XL" data-colors="Jet Black,Classic White">
 <h3>Urban Trend – Maharagama</h3>
-<p>Dehiwala Road</p>
-<b>Sizes:</b>
 <div class="sizes"><span>XS</span><span>S</span><span>M</span><span>XL</span></div>
-<b>Colors:</b>
-<div>
-<div class="color-tag"><span class="color-dot" style="background:black;"></span>Jet Black</div>
-<div class="color-tag"><span class="color-dot" style="background:white;"></span>Classic White</div>
-</div>
+<div class="colors"><span>Jet Black</span><span>Classic White</span></div>
 <iframe src="https://www.google.com/maps?q=Dehiwala+Road+Maharagama&output=embed"></iframe>
 <button onclick="openPreorder(this)" class="preorder-btn">Pre-Order</button>
 </div>
@@ -361,6 +273,35 @@ iframe{
 </div>
 
 <div id="noShopsMessage">❌ No shops found matching your filters!</div>
+
+<!-- PREORDER MODAL -->
+<div class="modal" id="preorderModal">
+<div class="modal-content">
+<span class="close-btn" onclick="closePreorder()">✖</span>
+<h3>Pre-Order Moose T-Shirt</h3>
+
+<input type="text" id="shopName" readonly>
+<input type="text" id="customerName" placeholder="Your Name">
+<input type="tel" id="customerPhone" placeholder="Phone Number">
+
+<select id="preorderSize">
+<option value="">Select Size</option>
+<option>XS</option><option>S</option><option>M</option>
+<option>L</option><option>XL</option><option>XXL</option>
+</select>
+
+<select id="preorderColor">
+<option value="">Select Color</option>
+<option>Classic White</option>
+<option>Jet Black</option>
+<option>Heather Grey</option>
+<option>Charcoal</option>
+<option>Navy Blue</option>
+</select>
+
+<button onclick="submitPreorder()" class="preorder-btn">Submit Pre-Order</button>
+</div>
+</div>
 
 <script>
 function filterShops(){
@@ -389,7 +330,33 @@ visible===0?"block":"none";
 }
 
 function openPreorder(btn){
-alert("Pre-Order system ready ✅");
+const shop=btn.closest(".shop-card").querySelector("h3").innerText;
+document.getElementById("shopName").value=shop;
+document.getElementById("preorderModal").style.display="flex";
+}
+
+function closePreorder(){
+document.getElementById("preorderModal").style.display="none";
+}
+
+function submitPreorder(){
+const name=document.getElementById("customerName").value.trim();
+const phone=document.getElementById("customerPhone").value.trim();
+const size=document.getElementById("preorderSize").value;
+const color=document.getElementById("preorderColor").value;
+
+if(!name||!phone||!size||!color){
+alert("Please fill all fields!");
+return;
+}
+
+alert("✅ Pre-Order Submitted Successfully!");
+closePreorder();
+
+document.getElementById("customerName").value="";
+document.getElementById("customerPhone").value="";
+document.getElementById("preorderSize").value="";
+document.getElementById("preorderColor").value="";
 }
 </script>
 
