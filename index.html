@@ -6,107 +6,114 @@
 <title>Moose T-Shirt Shops</title>
 
 <style>
-body { font-family: Arial, sans-serif; background: #f9f9f9; margin:0; padding:0; color: #333; }
+body { font-family: Arial, sans-serif; background: #f4f4f4; margin:0; padding:0; color: #333; }
 
 /* Header */
-header { background: #333; color: #fff; padding: 10px 20px; display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; }
-header h1 { margin: 0; font-size: 1.5em; flex: 1 1 200px; text-align: center; }
-header img { height: 50px; margin-right: 15px; }
+header { background: #222; color: #fff; padding: 15px 20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+header h1 { margin:0; text-align:center; flex:1; }
+header img { height:50px; }
 
 /* Navigation */
-nav { background: #444; padding: 10px 20px; display: flex; flex-wrap: wrap; justify-content: center; }
-nav a { color: #fff; text-decoration: none; margin: 5px 15px; font-weight: bold; }
-nav a:hover { color: #ffcc00; }
+nav { background:#333; padding:10px; text-align:center; }
+nav a { color:#fff; text-decoration:none; margin:0 15px; font-weight:bold; }
+nav a:hover { color:#ffcc00; }
 
 /* Filters */
-.filters { text-align:center; margin: 20px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-select { padding: 8px; font-size: 1em; min-width: 150px; }
+.filters { text-align:center; margin:20px 0; display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+select { padding:8px; min-width:150px; }
 
-/* Cards */
-.shop-container { display: flex; flex-wrap: wrap; justify-content: center; margin: 10px; gap: 15px; }
+/* Shop Cards */
+.shop-container { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; padding:10px; }
 
 .shop-card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    width: 280px;
-    padding: 15px;
+background:#fff;
+border-radius:10px;
+box-shadow:0 4px 12px rgba(0,0,0,0.15);
+width:300px;
+padding:15px;
 }
 
-.shop-card h3 { margin-top: 0; }
-.shop-card p { margin: 5px 0; font-size: 0.9em; }
+.shop-card h3 { margin-top:0; }
 
 .sizes span {
-    background: #eee;
-    border-radius: 4px;
-    padding: 3px 6px;
-    margin: 3px;
-    font-size: 0.8em;
+background:#eee;
+padding:4px 8px;
+border-radius:4px;
+font-size:0.8em;
+margin:3px;
+display:inline-block;
 }
 
 .color-dot {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    margin: 3px;
-    border: 1px solid #ccc;
+display:inline-block;
+width:15px;
+height:15px;
+border-radius:50%;
+margin:3px;
+border:1px solid #ccc;
 }
 
-/* Preorder Button */
+iframe {
+width:100%;
+height:160px;
+border:0;
+border-radius:8px;
+margin-top:10px;
+}
+
+/* Button */
 .preorder-btn {
-    background: #ffcc00;
-    border: none;
-    padding: 8px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px;
-    width: 100%;
+background:#ffcc00;
+border:none;
+padding:10px;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+margin-top:10px;
+width:100%;
 }
-
-.preorder-btn:hover { background: #e6b800; }
+.preorder-btn:hover { background:#e6b800; }
 
 /* Modal */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6);
-    justify-content: center;
-    align-items: center;
+display:none;
+position:fixed;
+z-index:999;
+left:0; top:0;
+width:100%; height:100%;
+background:rgba(0,0,0,0.6);
+justify-content:center;
+align-items:center;
 }
 
 .modal-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 400px;
+background:#fff;
+padding:20px;
+border-radius:10px;
+width:90%;
+max-width:400px;
 }
 
 .modal-content input,
 .modal-content select {
-    width: 100%;
-    padding: 8px;
-    margin: 8px 0;
+width:100%;
+padding:8px;
+margin:8px 0;
 }
 
 .close-btn {
-    float: right;
-    cursor: pointer;
-    font-weight: bold;
-    color: red;
+float:right;
+cursor:pointer;
+color:red;
+font-weight:bold;
 }
 
 #noShopsMessage {
-    text-align: center;
-    color: red;
-    font-weight: bold;
-    margin-top: 20px;
-    display: none;
+text-align:center;
+color:red;
+font-weight:bold;
+display:none;
+margin-top:15px;
 }
 </style>
 </head>
@@ -124,6 +131,7 @@ select { padding: 8px; font-size: 1em; min-width: 150px; }
 <a href="#">Just Dropped</a>
 </nav>
 
+<!-- Filters -->
 <div class="filters">
 <select id="townSelect" onchange="filterShops()">
 <option value="">--All Towns--</option>
@@ -131,25 +139,79 @@ select { padding: 8px; font-size: 1em; min-width: 150px; }
 <option value="Kottawa">Kottawa</option>
 <option value="Maharagama">Maharagama</option>
 </select>
+
+<select id="sizeSelect" onchange="filterShops()">
+<option value="">--Any Size--</option>
+<option>XS</option><option>S</option><option>M</option>
+<option>L</option><option>XL</option><option>XXL</option>
+</select>
+
+<select id="colorSelect" onchange="filterShops()">
+<option value="">--Any Color--</option>
+<option>Classic White</option>
+<option>Jet Black</option>
+<option>Heather Grey</option>
+<option>Charcoal</option>
+<option>Navy Blue</option>
+</select>
 </div>
 
-<div class="shop-container" id="shopsContainer">
+<div class="shop-container">
 
-<div class="shop-card" data-town="Nugegoda">
+<!-- Nugegoda -->
+<div class="shop-card" data-town="Nugegoda" data-sizes="S,M,L,XL" data-colors="Classic White,Jet Black">
 <h3>Cool Planet – Nugegoda</h3>
 <p>27 S. De S. Jayasinghe Mawatha</p>
+
+<div class="sizes">
+<span>S</span><span>M</span><span>L</span><span>XL</span>
+</div>
+
+<div>
+<div class="color-dot" style="background:white;"></div>
+<div class="color-dot" style="background:black;"></div>
+</div>
+
+<iframe src="https://www.google.com/maps?q=Cool+Planet+Nugegoda&output=embed"></iframe>
+
 <button onclick="openPreorder(this)" class="preorder-btn">Pre-Order</button>
 </div>
 
-<div class="shop-card" data-town="Kottawa">
+<!-- Kottawa -->
+<div class="shop-card" data-town="Kottawa" data-sizes="M,L,XL,XXL" data-colors="Heather Grey,Navy Blue">
 <h3>ZENN Clothing – Kottawa</h3>
 <p>High-Level Road</p>
+
+<div class="sizes">
+<span>M</span><span>L</span><span>XL</span><span>XXL</span>
+</div>
+
+<div>
+<div class="color-dot" style="background:grey;"></div>
+<div class="color-dot" style="background:navy;"></div>
+</div>
+
+<iframe src="https://www.google.com/maps?q=Kottawa+High+Level+Road&output=embed"></iframe>
+
 <button onclick="openPreorder(this)" class="preorder-btn">Pre-Order</button>
 </div>
 
-<div class="shop-card" data-town="Maharagama">
+<!-- Maharagama -->
+<div class="shop-card" data-town="Maharagama" data-sizes="S,M,L" data-colors="Classic White,Charcoal">
 <h3>Fashion Factory – Maharagama</h3>
 <p>High-Level Road</p>
+
+<div class="sizes">
+<span>S</span><span>M</span><span>L</span>
+</div>
+
+<div>
+<div class="color-dot" style="background:white;"></div>
+<div class="color-dot" style="background:#36454F;"></div>
+</div>
+
+<iframe src="https://www.google.com/maps?q=Maharagama+High+Level+Road&output=embed"></iframe>
+
 <button onclick="openPreorder(this)" class="preorder-btn">Pre-Order</button>
 </div>
 
@@ -157,11 +219,11 @@ select { padding: 8px; font-size: 1em; min-width: 150px; }
 
 <div id="noShopsMessage">❌ No shops found matching your filters!</div>
 
-<!-- Preorder Modal -->
+<!-- Modal -->
 <div class="modal" id="preorderModal">
 <div class="modal-content">
 <span class="close-btn" onclick="closePreorder()">✖</span>
-<h3>Pre-Order T-Shirt</h3>
+<h3>Pre-Order Moose T-Shirt</h3>
 
 <input type="text" id="shopName" readonly>
 <input type="text" id="customerName" placeholder="Your Name">
@@ -185,21 +247,29 @@ select { padding: 8px; font-size: 1em; min-width: 150px; }
 <button onclick="submitPreorder()" class="preorder-btn">
 Submit Pre-Order
 </button>
-
 </div>
 </div>
 
 <script>
 function filterShops() {
 const town = document.getElementById("townSelect").value;
+const size = document.getElementById("sizeSelect").value;
+const color = document.getElementById("colorSelect").value;
+
 const shops = document.querySelectorAll(".shop-card");
 let anyVisible = false;
 
 shops.forEach(shop => {
-let show = true;
-if (town && shop.dataset.town !== town) show = false;
-shop.style.display = show ? "block" : "none";
-if(show) anyVisible = true;
+const matchTown = !town || shop.dataset.town === town;
+const matchSize = !size || shop.dataset.sizes.split(",").includes(size);
+const matchColor = !color || shop.dataset.colors.split(",").includes(color);
+
+if (matchTown && matchSize && matchColor) {
+shop.style.display = "block";
+anyVisible = true;
+} else {
+shop.style.display = "none";
+}
 });
 
 document.getElementById("noShopsMessage").style.display =
